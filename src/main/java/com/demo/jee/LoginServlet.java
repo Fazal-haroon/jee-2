@@ -12,14 +12,7 @@ import java.io.PrintWriter;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        PrintWriter writer = httpServletResponse.getWriter();
-        writer.println("<html>");
-        writer.println("<head>");
-        writer.println("<title>Servlet</title>");
-        writer.println("</head>");
-        writer.println("<body>");
-        writer.println("Dummy Stuff");
-        writer.println("</body>");
-        writer.println("</html>");
+//        httpServletRequest.getRequestDispatcher("Where my JSP is").forward(httpServletRequest, httpServletResponse);
+        httpServletRequest.getRequestDispatcher("/WEB-INF/views/ .jsp").forward(httpServletRequest, httpServletResponse);
     }
 }
