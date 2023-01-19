@@ -17,9 +17,17 @@
 <%--%>--%>
 
 <%
-//    java.util.Date date = new java.util.Date();
+    //    java.util.Date date = new java.util.Date();
     Date date = new Date();
 %>
-<p>Dummy Stuff from JSP and Get Parameter Value "name" : ${name} and "date" : <%=date%></p>
+<p>Dummy Stuff from JSP and Get Parameter Value "name" : ${name} and "date" : <%=date%>
+</p>
+<br>
+<p>and "password" : ${password}</p>
+<br>
+<form action="/login.do" method="post">
+    Enter your name <input type="text" name="name"/>
+    <input type="submit" value="Login"/>
+</form>
 </body>
 </html>
