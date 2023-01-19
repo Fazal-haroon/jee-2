@@ -12,6 +12,6 @@
     <title>Servlet</title>
 </head>
 <body>
-<p>Dummy Stuff from JSP</p>
+<p>Dummy Stuff from JSP and Get Parameter Value "name" : ${name}</p>
 </body>
 </html>
