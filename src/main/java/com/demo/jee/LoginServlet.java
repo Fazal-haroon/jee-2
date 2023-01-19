@@ -1,42 +1,42 @@
 package com.demo.jee;
 
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(urlPatterns = "/login.do")
 public class LoginServlet extends HttpServlet {
 
-    private UserValidationService service = new UserValidationService();
+	private LoginService service = new LoginService();
 
-    @Override
-    protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
-//        httpServletRequest.getRequestDispatcher("Where my JSP is").forward(httpServletRequest, httpServletResponse);
-        System.out.println(httpServletRequest.getParameter("name")); //http://localhost:8080/?name=fazaltuts4u
-        String name = httpServletRequest.getParameter("name");
-//        httpServletRequest.setAttribute("name", name); //http://localhost:8080/?name=fazaltuts4u
-//        httpServletRequest.setAttribute("password", httpServletRequest.getParameter("password"));
-        httpServletRequest.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(httpServletRequest, httpServletResponse);
-    }
+	@Override
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException {
+		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(
+				request, response);
+	}
 
-    @Override
-    protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        String name = httpServletRequest.getParameter("name");
-        String password = httpServletRequest.getParameter("password");
+	@Override
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException {
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
 
-        boolean userValid = service.isUserValid(name, password);
+		boolean isValidUser = service.validateUser(name, password);
 
-        if (userValid) {
-            httpServletRequest.setAttribute("name", name);
-            httpServletRequest.setAttribute("password", password);
-            httpServletRequest.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(httpServletRequest, httpServletResponse);
-        } else {
-            httpServletRequest.setAttribute("errorMsg", "Invalid Credentials!");
-            httpServletRequest.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(httpServletRequest, httpServletResponse);
-        }
-    }
+		if (isValidUser) {
+			request.setAttribute("name", name);
+			request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(
+					request, response);
+		} else {
+			request.setAttribute("errorMessage", "Invalid Credentials!!");
+			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(
+					request, response);
+		}
+	}
+
 }

@@ -1,10 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome Post</title>
+<title>Yahoo!!</title>
 </head>
 <body>
-    Welcome to ${name} and ${password}
+Welcome ${name}
 </body>
 </html>
