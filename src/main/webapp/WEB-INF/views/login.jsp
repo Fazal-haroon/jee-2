@@ -25,9 +25,13 @@
 <br>
 <p>and "password" : ${password}</p>
 <br>
+<%--valid user >> welcome.jsp--%>
+<%--invalid user >> login.jsp--%>
 <form action="/login.do" method="post">
     Enter your name <input type="text" name="name"/>
+    Enter your name <input type="password" name="password"/>
     <input type="submit" value="Login"/>
 </form>
+<p style="color: crimson">${errorMsg}</p>
 </body>
 </html>

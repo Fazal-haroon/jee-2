@@ -5,6 +5,6 @@
     <title>Welcome Post</title>
 </head>
 <body>
-    Welcome
+    Welcome to ${name} and ${password}
 </body>
 </html>
