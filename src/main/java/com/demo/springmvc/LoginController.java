@@ -17,9 +17,11 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String handleLoginRequest(@RequestParam(name = "name") String name, ModelMap modelMap){
+    public String handleLoginRequest(@RequestParam(name = "name") String name, @RequestParam(name = "password") String password, ModelMap modelMap){
         System.out.println("name = " + name);
+        System.out.println("password = " + password);
         modelMap.put("name", name);
+        modelMap.put("password", password);
         return "welcome";
     }
 }
