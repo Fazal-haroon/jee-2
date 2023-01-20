@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LoginController {
+    private LoginService loginService = new LoginService();
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
 //    @ResponseBody
@@ -18,6 +19,10 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String handleLoginRequest(@RequestParam(name = "name") String name, @RequestParam(name = "password") String password, ModelMap modelMap){
+        if (!loginService.validateUser(name, password)) {
+            modelMap.put("errorMessage", "Invalid Credentials");
+            return "login";
+        }
         System.out.println("name = " + name);
         System.out.println("password = " + password);
         modelMap.put("name", name);
